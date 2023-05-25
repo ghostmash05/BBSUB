@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins',sans-serif;
+
+}
+section
+{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   width: 100%;
+   background-color: rgb(110, 6, 6) ;
+   background: url(images/login-background-test.jpg);
+   background-position: center;
+   background-size: cover;
+}
+h2
+{
+  font-size: 2em;
+  color: #fff;
+  text-align: center;
+}
+.form-box
+{
+   position: relative;
+   width: 450px;
+   height: 700px;
+   background: transparent;
+   border: 2px solid rgba(255, 255, 255, 0.5);
+   border-radius: 40px;
+   -webkit-backdrop-filter: blur(10px);
+   backdrop-filter: blur(10px);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+}
+.inputbox
+{
+    position: relative;
+    margin: 30px;
+    width: 310px;
+    border-bottom: 2px solid #fff;
+
+}
+.inputbox label
+{
+    position: absolute;
+    top: -140%;
+    left: -120px;
+    transform: translate(120px, 50%);
+    color: #fff;
+    font-size: 1em;
+    pointer-events: none;
+
+}
+
+input :focus ~ label,
+input :valid ~ label
+{
+    top: -5px;
+}
+
+.inputselector {
+    position: relative;
+    margin: 30px;
+    width: 310px;
+}
+
+.inputselector label {
+    position: absolute;
+    top: -22px;
+    left: 0;
+    color: #fff;
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.2s;
+}
+
+.inputselector input[type="radio"] {
+    width: 100%;
+    padding: 20px 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 16px;
+}
+
+.inputselector ion-icon
+{
+    position: absolute;
+    right: 2px;
+    color: #fff;
+    font-size: 1.5em;
+    top: -22px;
+}
+
+.radio-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3px;
+    padding: 5px;
+  }
+
+.radio-options label {
+    margin: 0 10px;
+    cursor: pointer;
+    position: relative;
+    left: 30px;
+    top: auto;
+  }
+   
+.inputbox input
+{
+    width: 100%;
+    height: 50%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding: 0 35px 0 5px;
+    color: #fff;
+
+}
+
+.bgselector
+{
+    position: relative;
+    margin: 30px;
+    width: 310px;
+}
+
+.bgselector label
+{
+    position: absolute;
+    top: -22px;
+    left: 0;
+    color: #fff;
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.2s;
+}
+
+.bgselector ion-icon
+{
+    position: absolute;
+    right: 2px;
+    color: #fff;
+    font-size: 1.5em;
+    top: -22px;
+}
+
+.bgselector select {
+
+    background-color: transparent;
+    width: 80%;
+    padding: 8px;
+    margin: 0 30px;
+    top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    border: 1px solid #e6dad888;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #fff;
+   
+  }
+
+.bgselector select option {
+    padding: 30px;
+    color: #110202;
+  }
+
+.inputbox ion-icon
+{
+    position: absolute;
+    right: 2px;
+    color: #fff;
+    font-size: 1.5em;
+    top: -22px;
+}
+button
+{
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    background: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    
+}
+
+.register
+{
+    font-size: .9em;
+    color: antiquewhite;
+    text-align: center;
+    margin: 30px 0 10px;
+
+}
+
+.register p a
+{
+    text-decoration: solid;
+    color: aliceblue;
+    font-weight: 500;
+    
+}
+
+.register p a:hover
+{
+    text-decoration: underline;
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="signin.css">
+        <title> Blood Bank of State University of Bangladesh (BBSUB) </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <section>
+            <div class="form-box">
+            <div class="form-value">
+                <form method="post" action="Login.php">
+                    <h2>Sign In</h2>
+                    
+                    <div class="inputbox">
+                    <ion-icon name="id-card-outline"></ion-icon>   
+                    <input type="text" id="Student_ID" name="Student_ID" required>
+                    <label for="Student_ID">Student ID (Ex: UG02-56-21-016)</label>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="Password" id="Pass" name="Pass" required>
+                    <label for="Pass">Password</label>
+                    
+                </div>
+                <div class="forgot">
+                    <label for=""><a href="forgotpassword.php">Forgot Password</a></label>
+                    
+                </div>
+                <button type="submit" name="button">Log In</button>
+                <div class="register">
+                <p>Don't Have an Account? <a href="signup.html">Sign Up </a></p>
+                </div>
+
+                </form>
+            </div>
+            </div>
+        </section>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        
+    </body>
+</html>

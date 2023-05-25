@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="signup.css">
+        <title> Blood Bank of State University of Bangladesh (BBSUB) </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <section>
+            <div class="form-box">
+            <div class="form-value">
+                <form method="post" action="submission.php">
+                    <h2>Sign Up</h2>
+                    
+                <div class="inputbox">
+                    <ion-icon name="id-card-outline"></ion-icon>   
+                    <input type="text" id="Student_ID" name="Student_ID" required>
+                    <label for="Student_ID">Student ID (Ex: UG02-56-21-016)</label>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="person-outline"></ion-icon>
+                    <input type="text" id="Name" name="Name" required>
+                    <label for="Name">Name</label>
+                </div>
+               
+               
+                <div class="inputbox">
+                    <ion-icon name="phone-portrait-outline"></ion-icon>  
+                    <input type="text" id="Contact" name="Contact" required>
+                    <label for="Contact">Contact Number</label>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="home-outline"></ion-icon>  
+                    <input type="text" id="Address" name="Address" required>
+                    <label for="Address">Address</label>
+
+                </div>
+
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>  
+                    <input type="email" id="email" name="email" required>
+                    <label for="email">Email</label>
+                </div>
+
+                <div class="bgselector">
+                    <ion-icon name="water-outline"></ion-icon>
+                    <label for="blood_group">Blood Group</label>
+                    <select id="blood_group" name="blood_group" required>
+                      <option value="A+">A+</option>
+                      <option value="A-">A-</option>
+                      <option value="B+">B+</option>
+                      <option value="B-">B-</option>
+                      <option value="O+">O+</option>
+                      <option value="O-">O-</option>
+                      <option value="AB+">AB+</option>
+                      <option value="AB-">AB-</option>
+                    </select>
+                  </div>
+                  
+
+                <div class="inputselector">
+                    <ion-icon name="people-outline"></ion-icon>
+                    <label for="gender">Gender</label>
+                    <div class="radio-options">
+                        <label for="male">Male</label>
+                        <input type="radio" id="male" name="gender" value="Male" required>
+                        <label for="female">Female</label>
+                        <input type="radio" id="female" name="gender" value="Female">
+                    </div>
+                </div>
+
+                <div class="inputbox">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="Password" id="Pass" name="Pass" required>
+                    <label for="Pass">Password</label>
+                </div>
+
+                <div>    
+                    <button type="submit">Sign Up</button>
+                    <div class="register">
+                    <p>Already Have a Account? <a href="index.html">Sign In</a></p>
+                </div>
+
+                </form>
+            </div>
+            </div>
+        </section>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
