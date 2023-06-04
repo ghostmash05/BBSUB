@@ -84,33 +84,35 @@ $email = $_SESSION['Email'];
         }
 
         let mySwitch = document.getElementById("mySwitch");
-        let switchStateCookie = getCookie("switchState");
+        let userID = "<?php echo $username; ?>";
+        let switchStateCookie = getCookie("switchState", userID);
 
         if (switchStateCookie === "on") {
         mySwitch.checked = true;
         } else if (switchStateCookie === "off") {
         mySwitch.checked = false;
         }
+
         mySwitch.addEventListener("change", function() {
         if (this.checked) {
-        setCookie("switchState", "on", 365);
+        setCookie("switchState", "on", 365, userID);
         } else {
-        setCookie("switchState", "off", 365);
+        setCookie("switchState", "off", 365, userID);
         }
         });
 
-        function setCookie(name, value, days) {
+        function setCookie(name, value, days, userId) {
         let expires = "";
         if (days) {
         let date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         expires = "; expires=" + date.toUTCString();
         }
-        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+        document.cookie = name + "_" + userId + "=" + (value || "") + expires + "; path=/";
         }
 
-        function getCookie(name) { 
-        let nameEQ = name + "=";
+        function getCookie(name, userId) {
+        let nameEQ = name + "_" + userId + "=";
         let ca = document.cookie.split(';');
         for (let i = 0; i < ca.length; i++) {
         let c = ca[i];
