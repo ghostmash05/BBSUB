@@ -41,13 +41,13 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Student_ID</th>
+                    <th>Student ID</th>
                     <th>Name</th>
-                    <th>Contact_Num</th>
+                    <th>Contact Number</th>
                     <th>Address</th>
                     <th>Email</th>
                     <th>Gender</th>
-                    <th>Blood_Group</th>
+                    <th>Blood Group</th>
                     <th>Last Donated</th>
                 </tr>
             </thead>

@@ -24,7 +24,7 @@
   display: inline-block;
   background-color: #007bff;
   color: #fff;
-  padding: 10px 20px;
+  padding: 8px 15px;
   margin-top: 15px ;
   text-decoration: none;
   border-radius: 5px;
@@ -39,7 +39,7 @@
 <?php
 
 if (isset($_POST['Student_ID']) && isset($_POST['Name']) && isset($_POST['Contact']) && isset($_POST['Address']) 
-     && isset($_POST['blood_group']) && isset($_POST['email']) && isset($_POST['gender']) && isset($_POST['Pass']))
+     && isset($_POST['blood_group']) && isset($_POST['email']) && isset($_POST['gender']) && isset($_POST['Pass']) && isset($_POST['Confirm_Pass']))
 
 {
     include 'db_conn.php';
@@ -61,15 +61,28 @@ if (isset($_POST['Student_ID']) && isset($_POST['Name']) && isset($_POST['Contac
     $Email = validate($_POST['email']);
     $Gender = validate($_POST['gender']);
     $Pass = validate($_POST['Pass']);
-    $encrypted_pwd=md5($Pass);
+    $Confirm_Pass = validate($_POST['Confirm_Pass']);
+    $encrypted_pwd= md5($Pass);
+    $encrypted_pwd_confirm = md5($Confirm_Pass);
 
-    if (empty($Student_ID) || empty($Name) || empty($Contact) || empty($Address) || empty($Blood_group) || empty($Email) || empty($Gender) || empty($Pass))
+    if (empty($Student_ID) || empty($Name) || empty($Contact) || empty($Address) || empty($Blood_group) || empty($Email) || empty($Gender) || empty($Pass) || empty($Confirm_Pass))
     {
         header("Location : Signup.html");
     }
 
     else
     {
+      if($encrypted_pwd != $encrypted_pwd_confirm){
+        echo "<div class='message-container'>";
+        echo "Passwords do not match!";
+        $link_address = "signup.html";
+        echo "<br><a href='".$link_address."' class='button-link'>Try Again</a></br>";
+        echo "</div>";
+        exit();
+      }
+      else
+      {
+
         $sql = "INSERT INTO students(Student_ID, Name, Contact_num, Address, Email, Gender, Blood_Group, Pass) 
                 VALUES('$Student_ID','$Name','$Contact','$Address','$Email','$Gender','$Blood_group','$encrypted_pwd')";
 
@@ -83,7 +96,7 @@ if (isset($_POST['Student_ID']) && isset($_POST['Name']) && isset($_POST['Contac
             echo "<br><a href='".$link_address."' class='button-link'>Sign In</a></br>";
             echo "</div>";            
             
-		}
+		    }
         else 
         {
 			      echo "<div class='message-container'>";
@@ -91,8 +104,9 @@ if (isset($_POST['Student_ID']) && isset($_POST['Name']) && isset($_POST['Contac
             $link_address = "signup.html";
             echo "<br><a href='".$link_address."' class='button-link'>Try Again</a></br>";
             echo "</div>";
-		}
+		    }
     }
+  }
 }
 else
 {

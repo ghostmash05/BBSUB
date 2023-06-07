@@ -24,7 +24,6 @@
                     <label for="Name">Name</label>
                 </div>
                
-               
                 <div class="inputbox">
                     <ion-icon name="phone-portrait-outline"></ion-icon>  
                     <input type="text" id="Contact" name="Contact" required>
@@ -76,10 +75,19 @@
                     <label for="Pass">Password</label>
                 </div>
 
-                <div>    
+                <div class="inputbox">
+                    <ion-icon name="lock-closed"></ion-icon>
+                    <input type="Password" id="Confirm_Pass" name="Confirm_Pass" required>
+                    <label for="Confirm_Pass">Confirm Password</label>
+                </div>
+
+                <div class="termsandcon">
+                    <input type="checkbox" id="terms" name="terms" value="terms" required>
+                    <label for="terms">I Agree to the <a href="T&C.html">Terms and Conditions</a></label> 
+                    </div>
                     <button type="submit">Sign Up</button>
                     <div class="register">
-                    <p>Already Have a Account? <a href="index.html">Sign In</a></p>
+                    <p>Already Have an Account? <a href="index.html">Sign In</a></p>
                 </div>
 
                 </form>

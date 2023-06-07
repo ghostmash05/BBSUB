@@ -39,8 +39,6 @@ header{
     position:relative;
     padding:0 2rem;
 
-
-
 }
 .navbar{
     width: 100%;
@@ -50,9 +48,6 @@ header{
     display:flex;
     align-items:center;
     justify-content:space-between;
-
-
-
 
 }
 
@@ -162,6 +157,12 @@ header{
     border-radius: 5px;
     padding: 2px;
 }
+.banner-text
+{
+    color: rgb(209, 181, 19);
+    font-weight: bold;
+
+}
 #select{
     background: rgba(128, 0, 0, 0.573);
     display: flex;
@@ -263,22 +264,11 @@ header{
 {
 
     body {
-        zoom: 1.2;
+        height: 100vh;
         max-height: 100vh;
         overflow: hidden;
       }
-      .logo{
-          zoom: 1.8;
-          margin-top: 20px;
-      }
-
-    .search-bar
-    {
-        width: 100%;
-        max-width: 800px;
-        font-size: x-large ;
-        font-weight: bold;
-    }
+      
     .navbar .links,
     .navbar .action_btn
     {
@@ -288,28 +278,42 @@ header{
     .navbar .toggle_btn
     {
         display: block;
+        zoom: 2.2;
+        margin-top: 20px;
     }
 
     .dropdown_menu
     {
         display: block;
-        zoom: 1.6;
+        zoom: 1.8;
     }
 
-    .navbar .toggle_btn
+    .logo
     {
-        zoom: 1.8;
+        zoom: 2.2;
         margin-top: 20px;
     }
-    .container {
-        position: relative;
-        margin-top: -30%;
+
+    .search-bar {
         width: 100%;
-        min-height: 90vh;
-        max-width: 98vh;
+        max-width: 800px;
+        font-size: x-large;
+        font-weight: bold;
+        zoom: 1.2;
       }
+    .banner-text
+    {
+        display: inline;
+        position: absolute;
+        top: 40%;
+        color:wheat;
+        font-size: large;
+        font-weight: bold;
+     
+    }
 
 }
+  
 
 @media (max-width: 576px)
 {

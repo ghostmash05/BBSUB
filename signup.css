@@ -27,7 +27,7 @@ h2
 {
    position: relative;
    width: 450px;
-   height: 700px;
+   height: 740px;
    background: transparent;
    border: 2px solid rgba(255, 255, 255, 0.5);
    border-radius: 40px;
@@ -203,7 +203,7 @@ button
     font-size: .9em;
     color: antiquewhite;
     text-align: center;
-    margin: 30px 0 10px;
+    margin: 10px 0 10px;
 
 }
 
@@ -212,10 +212,45 @@ button
     text-decoration: solid;
     color: aliceblue;
     font-weight: 500;
+
     
 }
 
 .register p a:hover
 {
     text-decoration: underline;
+}
+
+
+
+.termsandcon
+{
+    font-size: .9em;
+    color: antiquewhite;
+    text-align: center;
+    margin: 10px 0 10px;
+}
+
+
+.termsandcon label a
+{
+    text-decoration: solid;
+    color: aliceblue;
+    font-weight: 500;
+    
+}
+
+.termsandcon label a:hover
+{
+    text-decoration: underline;
+}
+
+.termsandcon input
+{
+    margin: 0 5px;
+}
+
+.termsandcon input[type="checkbox"]:checked ~ label
+{
+    color: #fff;
 }
