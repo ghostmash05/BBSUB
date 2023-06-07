@@ -150,8 +150,21 @@ toggleBtn.onclick = function()
   
 }
 
-</script>
+var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
+if (isMobile) {
+  window.addEventListener('DOMContentLoaded', function() {
+    var paragraph = document.getElementById("selectText");
+    paragraph.textContent = "Blood Group";
+
+    var paragraph2 = document.getElementById("selectText2");
+    paragraph2.textContent = "Gender";
+
+    
+  });
+}
+
+</script>
 
 </body>
 </html>

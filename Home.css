@@ -10,7 +10,7 @@
 
 body {
     height: 100vh;
-    background-image: url('images/background-home-primary.jpeg');
+    background-image: url('images/background-home-primary.webp');
     background-size:cover;
     background-position:center;
 
@@ -261,6 +261,24 @@ header{
 
 @media (max-width: 992px)
 {
+
+    body {
+        zoom: 1.2;
+        max-height: 100vh;
+        overflow: hidden;
+      }
+      .logo{
+          zoom: 1.8;
+          margin-top: 20px;
+      }
+
+    .search-bar
+    {
+        width: 100%;
+        max-width: 800px;
+        font-size: x-large ;
+        font-weight: bold;
+    }
     .navbar .links,
     .navbar .action_btn
     {
@@ -275,7 +293,22 @@ header{
     .dropdown_menu
     {
         display: block;
+        zoom: 1.6;
     }
+
+    .navbar .toggle_btn
+    {
+        zoom: 1.8;
+        margin-top: 20px;
+    }
+    .container {
+        position: relative;
+        margin-top: -30%;
+        width: 100%;
+        min-height: 90vh;
+        max-width: 98vh;
+      }
+
 }
 
 @media (max-width: 576px)

@@ -17,6 +17,7 @@
   font-weight: bolder;
   margin-bottom: 40px;
   margin-block-end: 30px;
+  margin-top: 20%;
 }
 
 .button-link {

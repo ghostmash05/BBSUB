@@ -44,6 +44,7 @@ if (isset($_POST['Student_ID']) && isset($_POST['Pass']))
                 $_SESSION['Email'] = $row['Email'];
                 $_SESSION['Contact_Num'] = $row['Contact_Num'];
                 $_SESSION['Blood_Group'] = $row['Blood_Group'];
+               
 
 
             }

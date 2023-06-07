@@ -22,7 +22,7 @@ $email = $_SESSION['Email'];
                 <a href="Home.html">
                 <img src="images/home.svg" class="menu-icon">
                 </a>
-                <a href="update.html">
+                <a href="update.php">
                 <img src="images/settings.svg" class="setting2-icon">
                 </a>
                 <h3 id="Username"><?php echo $username; ?></h3>
@@ -30,13 +30,13 @@ $email = $_SESSION['Email'];
                 <p id="bloodgroup">Blood Group:&nbsp;<?php echo $bloodgroup ?> </p>
                 <p id="phone">Phone:&nbsp;<?php echo $phone ; ?></p>
                 <p id="email">Email:&nbsp;<?php echo $email ; ?></p>
-
+               
                 
-                <label class="switch">
+                <label class="switch" id="switchState">
                     <input id="mySwitch" type="checkbox" class="btn" onclick="openPopup()">
                     <span class="slider"></span>
-                    <span class="on">Can't Donate Now</span>
-                    <span class="off">Can Donate Now</span>
+                    <span class="on" value="on">Can't Donate Now</span>
+                    <span class="off" value="off">Can Donate Now</span>
 
                 </label>
                 <div class="popup" id="popup">
@@ -85,42 +85,56 @@ $email = $_SESSION['Email'];
 
         let mySwitch = document.getElementById("mySwitch");
         let userID = "<?php echo $username; ?>";
-        let switchStateCookie = getCookie("switchState", userID);
 
-        if (switchStateCookie === "on") {
-        mySwitch.checked = true;
-        } else if (switchStateCookie === "off") {
-        mySwitch.checked = false;
+        function fetchSwitchState() {
+        let xhr = new XMLHttpRequest();
+    
+
+        xhr.open("POST", "fetch_switch_state.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    
+ 
+        xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+               
+                let switchState = xhr.responseText;
+                mySwitch.checked = (switchState === "on");
+            } else {
+                
+                console.error("Request error:", xhr.status);
+            }
         }
+        };
+        
+        xhr.send("userID=" + userID);
+        }
+
+
+        fetchSwitchState();
+
 
         mySwitch.addEventListener("change", function() {
-        if (this.checked) {
-        setCookie("switchState", "on", 365, userID);
-        } else {
-        setCookie("switchState", "off", 365, userID);
-        }
+        let switchState = this.checked ? "on" : "off";
+    
+        let xhr = new XMLHttpRequest();
+    
+        xhr.open("POST", "update_switch_state.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    
+        xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                console.log(xhr.responseText);
+            } else {
+                console.error("Request error:", xhr.status);
+            }
+         }
+         };
+    
+        xhr.send("switchState=" + switchState + "&userID=" + userID);
         });
 
-        function setCookie(name, value, days, userId) {
-        let expires = "";
-        if (days) {
-        let date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "_" + userId + "=" + (value || "") + expires + "; path=/";
-        }
-
-        function getCookie(name, userId) {
-        let nameEQ = name + "_" + userId + "=";
-        let ca = document.cookie.split(';');
-        for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-        }
-        return null;
-        }
 
         function closePopup() {
         popup.classList.remove("open-popup");
