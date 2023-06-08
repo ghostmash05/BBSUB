@@ -37,7 +37,7 @@ if (isset($_POST['Student_ID']) && isset($_POST['Pass']))
             if ($row['Student_ID'] === $Student_ID && $row['Pass'] === $encrpyted_pwd) 
             {
 
-                header("Location: Home.html");
+                header("Location: home.php");
                 $_SESSION['Student_ID'] = $row['Student_ID'];
                 $_SESSION['Pass'] = $row['Pass'];
                 $_SESSION['Name'] = $row['Name'];

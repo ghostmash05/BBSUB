@@ -1,5 +1,5 @@
 <?php
-session_start();
+include 'check_auth.php';
 $username = $_SESSION['Student_ID'];
 $name = $_SESSION['Name'];
 $bloodgroup = $_SESSION['Blood_Group'];
@@ -19,7 +19,7 @@ $email = $_SESSION['Email'];
     <body>
         <div class="container">
             <div class="profile-box">
-                <a href="Home.html">
+                <a href="home.php">
                 <img src="images/home.svg" class="menu-icon">
                 </a>
                 <a href="update.php">

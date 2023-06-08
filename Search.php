@@ -53,7 +53,8 @@
             </thead>
             <tbody>
             <?php
-          
+
+            include 'check_auth.php';
             include 'db_conn.php';
             
             if(isset($_GET['location']) && isset($_GET['bloodGroup']) && isset($_GET['gender']))
