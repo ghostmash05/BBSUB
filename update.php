@@ -1,5 +1,5 @@
 <?php
-session_start();
+include 'check_auth.php';
 include 'db_conn.php';
 $userID = $_SESSION['Student_ID'];
 
@@ -64,7 +64,7 @@ mysqli_close($conn);
         <input type="password" id="confirm_password" name="confirm_password" required><br>
         
         <input type="submit" value="Update">
-        <a href="Profile.php"><input type="button" value="Cancel"></a>
+        <a href="profile.php"><input type="button" value="Cancel"></a>
     </form>
     </section>
 </body>
