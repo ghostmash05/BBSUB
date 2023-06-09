@@ -86,7 +86,11 @@ if (isset($_POST['Student_ID']) && isset($_POST['Name']) && isset($_POST['Contac
         $sql = "INSERT INTO students(Student_ID, Name, Contact_num, Address, Email, Gender, Blood_Group, Pass) 
                 VALUES('$Student_ID','$Name','$Contact','$Address','$Email','$Gender','$Blood_group','$encrypted_pwd')";
 
-        $res = mysqli_query($conn, $sql);
+
+        $sql2 = "INSERT INTO donor_list(Student_ID, Name, Contact_num, Address, Email, Gender, Blood_Group) 
+        VALUES('$Student_ID','$Name','$Contact','$Address','$Email','$Gender','$Blood_group')";
+
+        $res = mysqli_query($conn, $sql) && mysqli_query($conn, $sql2);
 
         if ($res)
         {
