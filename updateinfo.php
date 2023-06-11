@@ -52,6 +52,7 @@ function validate($data)
 
 $Student_Id = $_SESSION['Student_ID'];
 $Name = validate($_POST['Name']);
+$Dept = validate($_POST['dept']);
 $Contact = validate($_POST['Contact']);
 $Address = validate($_POST['Address']);
 $Blood_group = validate($_POST['Blood_group']);
@@ -64,6 +65,7 @@ $encrypted_confirmpwd=md5($confirmPassword);
 
 $update_query = "UPDATE students SET 
                 Name = '$Name',
+                Department = '$Dept',
                 Contact_Num = '$Contact',
                 Address = '$Address',
                 Email = '$Email',
@@ -72,6 +74,7 @@ $update_query = "UPDATE students SET
 
 $update_query2 = "UPDATE donor_list SET 
                 Name = '$Name',
+                Department = '$Dept',
                 Contact_Num = '$Contact',
                 Address = '$Address',
                 Email = '$Email',
@@ -105,7 +108,6 @@ else {
 
 
 }
-
 
 mysqli_close($conn);
 ?>

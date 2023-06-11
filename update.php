@@ -1,9 +1,9 @@
 <?php
-include 'check_auth.php';
+session_start();
 include 'db_conn.php';
 $userID = $_SESSION['Student_ID'];
 
-$query = "SELECT Name, Address, Contact_Num, Email, Blood_Group  FROM students WHERE Student_ID = '$userID'";
+$query = "SELECT Name, Address, Contact_Num, Email, Blood_Group, Department  FROM students WHERE Student_ID = '$userID'";
 $result = mysqli_query($conn, $query);
 
 if ($result && mysqli_num_rows($result) > 0) {
@@ -13,6 +13,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     $Contact_Num = $row['Contact_Num'];
     $Email = $row['Email'];
     $Blood_Group = $row['Blood_Group'];
+    $Dept = $row['Department'];
 } else {
     echo "Error: " . $query . "<br>" . mysqli_error($conn);
 }
@@ -35,6 +36,20 @@ mysqli_close($conn);
 
         <label for="Name">Name:</label>
         <input type="text" name="Name" id="Name" value="<?php echo $Name; ?>" required><br><br>
+
+        <label for="dept">Department:</label>
+        <select name="dept" id="dept" required>
+            <option value="CSE"<?php if ($Dept === 'CSE') echo 'selected'; ?>>CSE</option>
+            <option value="Law"<?php if ($Dept === 'Law') echo 'selected'; ?>>Law</option>
+            <option value="Pharmacy"<?php if ($Dept === 'Pharmacy') echo 'selected'; ?>>Pharmacy</option>
+            <option value="Public Health"<?php if ($Dept === 'Public Health') echo 'selected'; ?>>Public Health</option>
+            <option value="FET"<?php if ($Dept === 'FET') echo 'selected'; ?>>FET</option>
+            <option value="JCMS"<?php if ($Dept === 'JCMS') echo 'selected'; ?>>JCMS</option>
+            <option value="Architecture"<?php if ($Dept === 'Architecture') echo 'selected'; ?>>Architecture</option>
+            <option value="Business Studies"<?php if ($Dept === 'Business Studies') echo 'selected'; ?>>Business Studies</option>
+            <option value="English Studies"<?php if ($Dept === 'English Studies') echo 'selected'; ?>>English Studies</option>
+            <option value="Enviromental Science"<?php if ($Dept === 'Enviromental Science') echo 'selected'; ?>>Enviromental Science</option>
+        </select><br><br>
         
         <label for="Contact">Contact Number:</label>
         <input type="text" name="Contact" id="Contact" value="<?php echo $Contact_Num; ?>" required><br><br>
@@ -64,7 +79,7 @@ mysqli_close($conn);
         <input type="password" id="confirm_password" name="confirm_password" required><br>
         
         <input type="submit" value="Update">
-        <a href="profile.php"><input type="button" value="Cancel"></a>
+        <a href="Profile.php"><input type="button" value="Cancel"></a>
     </form>
     </section>
 </body>

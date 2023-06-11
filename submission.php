@@ -39,7 +39,7 @@
 <?php
 
 if (isset($_POST['Student_ID']) && isset($_POST['Name']) && isset($_POST['Contact']) && isset($_POST['Address']) 
-     && isset($_POST['blood_group']) && isset($_POST['email']) && isset($_POST['gender']) && isset($_POST['Pass']) && isset($_POST['Confirm_Pass']))
+     && isset($_POST['blood_group']) && isset($_POST['dept'])  && isset($_POST['email']) && isset($_POST['gender']) && isset($_POST['Pass']) && isset($_POST['Confirm_Pass']))
 
 {
     include 'db_conn.php';
@@ -54,6 +54,7 @@ if (isset($_POST['Student_ID']) && isset($_POST['Name']) && isset($_POST['Contac
     }
 
     $Student_ID = validate($_POST['Student_ID']);
+    $Dept = validate($_POST['dept']);
     $Name = validate($_POST['Name']);
     $Contact = validate($_POST['Contact']);
     $Address = validate($_POST['Address']);
@@ -83,12 +84,12 @@ if (isset($_POST['Student_ID']) && isset($_POST['Name']) && isset($_POST['Contac
       else
       {
 
-        $sql = "INSERT INTO students(Student_ID, Name, Contact_num, Address, Email, Gender, Blood_Group, Pass) 
-                VALUES('$Student_ID','$Name','$Contact','$Address','$Email','$Gender','$Blood_group','$encrypted_pwd')";
+        $sql = "INSERT INTO students(Student_ID, Department , Name, Contact_num, Address, Email, Gender, Blood_Group, Pass) 
+                VALUES('$Student_ID','$Dept','$Name','$Contact','$Address','$Email','$Gender','$Blood_group','$encrypted_pwd')";
 
 
-        $sql2 = "INSERT INTO donor_list(Student_ID, Name, Contact_num, Address, Email, Gender, Blood_Group) 
-        VALUES('$Student_ID','$Name','$Contact','$Address','$Email','$Gender','$Blood_group')";
+        $sql2 = "INSERT INTO donor_list(Student_ID, Department , Name, Contact_num, Address, Email, Gender, Blood_Group) 
+        VALUES('$Student_ID','$Dept','$Name','$Contact','$Address','$Email','$Gender','$Blood_group')";
 
         $res = mysqli_query($conn, $sql) && mysqli_query($conn, $sql2);
 
@@ -114,7 +115,11 @@ if (isset($_POST['Student_ID']) && isset($_POST['Name']) && isset($_POST['Contac
 }
 else
 {
-    header("Location : Signup.html");
+  echo "<div class='message-container'>";
+  echo "You had one job, only one job! Can't even do that right! You Dissapoint Me!!";
+  $link_address = "signup.html";
+  echo "<br><a href='".$link_address."' class='button-link'>Try Again</a></br>";
+  echo "</div>";
 }
 
 

@@ -1,5 +1,16 @@
 <?php
 include 'check_auth.php';
+include 'db_conn.php';
+$sql= "SELECT COUNT(*) AS Donors FROM students;";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) 
+{
+    while($row = mysqli_fetch_assoc($result)) 
+    {
+        $Donors = $row['Donors'];
+    }
+}
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -46,17 +57,18 @@ include 'check_auth.php';
             <div class="banner">
             <div class="banner-text">
                 <h1>Blood Bank of State University of Bangladesh</h1>
-                <p>Donate Blood, Save Lives</p>
+                <h3>Donate Blood, Save Lives</h3>
+                <p>Active Donors: <?php echo $Donors; ?></p>
             </div>
             </div>
-
+            
         <div class="container">
             <div class="caption">
             <div class="caption-text">
                 <h1>Search Donors</h1>
             </div>
             </div>
-            <form method="get" action="Search.php">
+            <form method="get" action="search.php">
             <div class="search-bar">                   
                 <div id="select" class="select">
                     <p id="selectText" name="selectText" value="selectText">Select Blood Group</p>
@@ -85,15 +97,55 @@ include 'check_auth.php';
                 </div>
                 <input name="location" id="location" type="text" placeholder="Location">
                 <button type="submit" name="button" class="button" ><img src="images/magnifying-glass-solid.svg"></button>
-                
                 </div>
-    
-
-
             </div>
-            </form> 
+            </form>
+            </div>
+            </div>
         </div>
-
+            <div class="table"> 
+            <div class="table-text">
+            <h3>Lastest Additions</h3>      
+            <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php
+            include 'db_conn.php';
+            $sql2= "SELECT Name, Department, Address, Email  FROM students ORDER BY Serial DESC LIMIT 10;";
+            $result2 = mysqli_query($conn, $sql2);
+            if (mysqli_num_rows($result2) > 0) 
+            {
+                foreach($result2 as $row2)
+                {
+                    $Name = $row2['Name'];
+                    $Department = $row2['Department'];
+                    $Address = $row2['Address'];
+                    $Email = $row2['Email'];
+            ?>
+            <tr>
+                <td><?php echo $Name; ?></td>
+                <td><?php echo $Department; ?></td>
+                <td><?php echo $Address; ?></td>
+                <td><?php echo $Email; ?></td>
+            </tr>
+            <?php
+                }
+            }
+            ?>
+            </tbody>
+            </table>
+    </div>
+    </div>
+    </div>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="bootstrap.min.js"></script>
     </header>
     
 <script>

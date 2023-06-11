@@ -1,11 +1,24 @@
 <?php
 include 'check_auth.php';
+include 'db_conn.php';
 $username = $_SESSION['Student_ID'];
 $name = $_SESSION['Name'];
 $bloodgroup = $_SESSION['Blood_Group'];
 $phone = $_SESSION['Contact_Num'];
 $email = $_SESSION['Email'];
 
+$sql= "SELECT switchState,
+CASE
+    WHEN switchState = 'on' THEN 'Donor & Recipient'
+    WHEN switchState = 'off' THEN 'Recipient Only'
+END 
+AS UserType
+FROM
+students
+WHERE Student_ID = '$username';";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$UserType = $row['UserType'];
 ?>
 
 <!DOCTYPE html>
@@ -30,13 +43,14 @@ $email = $_SESSION['Email'];
                 <p id="bloodgroup">Blood Group:&nbsp;<?php echo $bloodgroup ?> </p>
                 <p id="phone">Phone:&nbsp;<?php echo $phone ; ?></p>
                 <p id="email">Email:&nbsp;<?php echo $email ; ?></p>
+                <p id="usertype">Type:&nbsp;<?php echo $UserType ; ?></p>
                
                 
                 <label class="switch" id="switchState">
                     <input id="mySwitch" type="checkbox" class="btn" onclick="openPopup()">
                     <span class="slider"></span>
-                    <span class="on" value="on">Can't Donate Now</span>
-                    <span class="off" value="off">Can Donate Now</span>
+                    <span class="on" value="on">Recipient Mode</span>
+                    <span class="off" value="off">Donor Mode</span>
 
                 </label>
                 <div class="popup" id="popup">

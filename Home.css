@@ -4,8 +4,6 @@
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
 
-
-
 }
 
 body {
@@ -13,8 +11,10 @@ body {
     background-image: url('images/background-home-primary.webp');
     background-size:cover;
     background-position:center;
+    overflow: hidden;
 
 }
+
 
 li {
     list-style: none;
@@ -166,15 +166,79 @@ header{
     font-weight: bold;
 
 }
+.banner-text p
+{
+    color: rgb(182, 207, 70);
+}
 .caption-text
 {
     color: #fff;
     font-weight: bold;
     display: inline;
     position: absolute;
-    top: 43%;
+    top: 43vh;
 
 }
+.table-text
+{
+    top: 60vh;
+    left: 40vw;
+    width: auto;
+    max-width: 800px;
+    height: 100%;
+    min-height: 300px;
+    max-height: 450px;
+    position: absolute;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    z-index: 1;
+}
+.table-text h3
+{
+    color: #fff;
+    padding-top: 4px;
+    padding-bottom: 6px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: transparent;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  table, th, td {
+    border: 1px solid black;
+  }
+  
+  th, td {
+    padding: 8px;
+    color: #c7d394;
+  }
+  
+  th {
+    text-align: left;
+    color: #ceba63;
+    font-weight: bold;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0.5em;
+    background-color: transparent;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+  
+  ::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+
 #select{
     background: rgba(128, 0, 0, 0.573);
     display: flex;
@@ -204,6 +268,7 @@ header{
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s;
+    z-index: 2;
 }
 #select ul li{
     padding: 10px 20px;
@@ -245,6 +310,7 @@ header{
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s;
+    z-index: 2;
 }
 #select2 ul li{
     padding: 10px 20px;
@@ -342,6 +408,23 @@ header{
         position: absolute;
         top: 47%;
         font-size: large;
+    }
+
+    .table-text
+    {
+    top: 55%;
+    left: 25px;
+    width: auto;
+    max-width: 950px;
+    height: 100%;
+    min-height: 300px;
+    max-height: 800px;
+    font-size: large;
+    font-weight: bold;
+    position: absolute;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    z-index: 1;
     }
 
 }

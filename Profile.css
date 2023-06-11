@@ -162,11 +162,10 @@ input[type=date]:focus {
     cursor: pointer;
     box-shadow: 0 5px 5px rgba(0,0,0,0.2);
 }
-
 body {
     height: 100vh;
     background-color: #000000;
-    background-image: url('https://physicians.dukehealth.org/sites/default/files/article/issue-130rheum870x300.jpg');
+    background-image: url(images/background-home-primary.webp);
     background-size:cover;
     background-position:center;
 
