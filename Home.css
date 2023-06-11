@@ -40,6 +40,7 @@ header{
     padding:0 2rem;
 
 }
+
 .navbar{
     width: 100%;
     height: 60px;
@@ -146,14 +147,16 @@ header{
     width: 100%;
     background: transparent;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 .search-bar{
     width: 110%;
-    max-width: 800px;
+    max-width: 950px;
     background: rgba(255, 255, 255, 0.2);
     display: flex;
+    flex-direction: row;
     border-radius: 5px;
     padding: 2px;
 }
@@ -161,6 +164,15 @@ header{
 {
     color: rgb(209, 181, 19);
     font-weight: bold;
+
+}
+.caption-text
+{
+    color: #fff;
+    font-weight: bold;
+    display: inline;
+    position: absolute;
+    top: 43%;
 
 }
 #select{
@@ -243,7 +255,6 @@ header{
     background-color: maroon;
     
 }
-
 .search-bar input{
     background: rgba(128, 0, 0, 0.573);
     flex: 1;
@@ -255,8 +266,18 @@ header{
     color: rgb(222, 235, 242);
 
 }
+.button{
+    width: 8%;
+    padding: 20px 20px;
+    border-radius: 4px;
+    border: 0;
+    background: transparent;
+}
+.button img{
+    width: 30px;
+}
 ::placeholder{
-    color: rgb(205, 195, 182);
+    color: rgb(226, 223, 218);
 
 }
 
@@ -296,20 +317,31 @@ header{
 
     .search-bar {
         width: 100%;
-        max-width: 800px;
+        max-width: 950px;
         font-size: x-large;
         font-weight: bold;
-        zoom: 1.2;
+        height: 100%;
+        max-height: 200px;
       }
     .banner-text
     {
         display: inline;
         position: absolute;
-        top: 40%;
+        top: 5%;
         color:wheat;
         font-size: large;
         font-weight: bold;
      
+    }
+
+    .caption-text
+    {
+        color: #fff;
+        font-weight: bold;
+        display: inline;
+        position: absolute;
+        top: 47%;
+        font-size: large;
     }
 
 }

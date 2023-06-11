@@ -20,7 +20,7 @@ include 'check_auth.php';
             <div class="logo"><a href="Home.html">BBSUB</a></div>
 
             <ul class="links">
-                <li><a href="profile.php">Profile</a></li>
+                <li><a href="Profile.php">Profile</a></li>
                 <li><a href="https://www.facebook.com/BadassMashrafe" target="_blank">Contact Admin</a></li>
                 <li><a href="https://www.hostwithbros.com" target="_blank">Host your own Website!</a></li>           
             </ul>
@@ -32,7 +32,7 @@ include 'check_auth.php';
 
          <div class="dropdown_menu">
             <ul>
-                <li><a href="profile.php">Profile</a></li>
+                <li><a href="Profile.php">Profile</a></li>
                 <li><a href="https://www.facebook.com/BadassMashrafe" target="_blank">Contact Admin</a></li>
                 <li><a href="https://www.hostwithbros.com" target="_blank">Host your own Website!</a></li>
                 <li><a href="Logout.php" class="action_btn">Log out</a></li>
@@ -51,6 +51,11 @@ include 'check_auth.php';
             </div>
 
         <div class="container">
+            <div class="caption">
+            <div class="caption-text">
+                <h1>Search Donors</h1>
+            </div>
+            </div>
             <form method="get" action="Search.php">
             <div class="search-bar">                   
                 <div id="select" class="select">
@@ -79,6 +84,10 @@ include 'check_auth.php';
                     <input type="hidden" name="gender" id="gender">    
                 </div>
                 <input name="location" id="location" type="text" placeholder="Location">
+                <button type="submit" name="button" class="button" ><img src="images/magnifying-glass-solid.svg"></button>
+                
+                </div>
+    
 
 
             </div>
