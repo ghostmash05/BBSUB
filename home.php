@@ -31,7 +31,7 @@ mysqli_close($conn);
             <div class="logo"><a href="Home.html">BBSUB</a></div>
 
             <ul class="links">
-                <li><a href="Profile.php">Profile</a></li>
+                <li><a href="profile.php">Profile</a></li>
                 <li><a href="https://www.facebook.com/BadassMashrafe" target="_blank">Contact Admin</a></li>
                 <li><a href="https://www.hostwithbros.com" target="_blank">Host your own Website!</a></li>           
             </ul>
@@ -43,7 +43,7 @@ mysqli_close($conn);
 
          <div class="dropdown_menu">
             <ul>
-                <li><a href="Profile.php">Profile</a></li>
+                <li><a href="profile.php">Profile</a></li>
                 <li><a href="https://www.facebook.com/BadassMashrafe" target="_blank">Contact Admin</a></li>
                 <li><a href="https://www.hostwithbros.com" target="_blank">Host your own Website!</a></li>
                 <li><a href="Logout.php" class="action_btn">Log out</a></li>

@@ -64,63 +64,46 @@
                     $Blood_Group = $_GET['bloodGroup'];
                     $Gender = $_GET['gender'];
 
-                    $sql= "SELECT Student_ID,Name,Department,Contact_Num,Address,Email,Gender,Blood_Group,Last_Donation_Date FROM donor_list where Address like '%$location%' and Blood_Group='$Blood_Group'";
-                    if ($Gender !== 'Both') 
-                    {
-                        $sql .= "AND Gender = '$Gender'";
+                    $sql = "SELECT d.Student_ID, d.Name, d.Department, d.Contact_Num, d.Address, d.Email, d.Gender, d.Blood_Group, d.Last_Donation_Date,
+                    CONCAT(SUBSTRING_INDEX(SUBSTRING_INDEX(d.Student_ID, '-', -3), '-', 1),'th') AS Batch
+                    FROM donor_list AS d
+                    WHERE d.Address LIKE '%$location%' AND d.Blood_Group = '$Blood_Group'";
+                    
+            if ($Gender !== 'Both') {
+                $sql .= " AND d.Gender = '$Gender'";
+            } else {
+                $sql .= " AND (d.Gender = 'Male' OR d.Gender = 'Female')";
+            }
+            
+            $result = mysqli_query($conn, $sql);
+            
+            if (mysqli_num_rows($result) > 0) {
+                foreach ($result as $row) {
+                    $last_donated = $row['Last_Donation_Date'];
+                    $last_donated_days = '-';
+                    if (!empty($last_donated)) {
+                        $current_date = date('Y-m-d');
+                        $diff = date_diff(date_create($last_donated), date_create($current_date));
+                        $last_donated_days = $diff->format('%a'). ' days ago';
                     }
-                    else 
-                    {
-                        $sql .= "AND (Gender='Male' or Gender='Female')";
-                    }
-                    $sql2= "SELECT CONCAT(SUBSTRING_INDEX(SUBSTRING_INDEX(Student_ID, '-', -3), '-', 1),'th') AS Batch FROM donor_list where Address like '%$location%' and Blood_Group='$Blood_Group'";
-                    if ($Gender !== 'Both') 
-                    {
-                        $sql2 .= "AND Gender = '$Gender'";
-                    }
-                    else 
-                    {
-                        $sql2 .= "AND (Gender='Male' or Gender='Female')";
-                    }
-
-                    $result = mysqli_query($conn,$sql);
-
-                    if (mysqli_num_rows($result) > 0)
-                    {
-                    foreach($result as $row){
-
-                        $last_donated = $row['Last_Donation_Date'];
-                        $last_donated_days = '-';
-                        if (!empty($last_donated)) {
-                            $current_date = date('Y-m-d');
-                            $diff = date_diff(date_create($last_donated), date_create($current_date));
-                            $last_donated_days = $diff->format('%a'). ' days ago';
-                        }
-                        $Batch = mysqli_query($conn,$sql2);
-                        $Batch = mysqli_fetch_assoc($Batch);
-                        $Batch = $Batch['Batch'];
-                        ?>
-                        <tr>  
-                            <td><?= $row['Name'];?></td>
-                            <td><?= $row['Contact_Num'];?></td>
-                            <td><?= $row['Address'];?></td>
-                            <td><?= $Batch;?></td>
-                            <td><?= $row['Department'];?></td>
-                            <td><?= $row['Blood_Group'];?></td>
-                            <td><?= $row['Email'];?></td>
-                            <td><?= $row['Gender'];?></td>
-                            <td><?= $last_donated_days;?></td>
-
-                           
-                        </tr>
-                             
-                        <?php
-                        }
-                    }
-                    else
-                    {
-                        echo '<P><strong>No donor found with this Criteria</strong></P>';
-                    }
+                    ?>
+                    <tr>  
+                        <td><?= $row['Name']; ?></td>
+                        <td><?= $row['Contact_Num']; ?></td>
+                        <td><?= $row['Address']; ?></td>
+                        <td><?= $row['Batch']; ?></td>
+                        <td><?= $row['Department']; ?></td>
+                        <td><?= $row['Blood_Group']; ?></td>
+                        <td><?= $row['Email']; ?></td>
+                        <td><?= $row['Gender']; ?></td>
+                        <td><?= $last_donated_days; ?></td>
+                    </tr>
+                    <?php
+                }
+            } else {
+                echo '<p><strong>No donor found with this criteria</strong></p>';
+            }
+            
 
                 }
                 else
